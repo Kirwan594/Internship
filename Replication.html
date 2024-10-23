@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学而</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: #f4f4f4;
+            height: 150vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 7vh;
+            background-color: #ffffff;
+            color: #666666;
+            z-index: 9;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #f4f4f4;
+            width: 50vw;
+            height: 120vh;
+            transform: translateY(7vh);
+        }
+
+        #logo {
+
+            margin-left: 25vw;
+            margin-right: 1vw;
+            transform: translateX(-8px);
+        }
+
+        .icon {
+            margin: 0 1vw;
+        }
+
+        .search {
+            display: flex;
+            margin-left: 2vw;
+            height: 60%;
+            border: 2px solid #ff5722;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search input[type="text"] {
+            border: none;
+            outline: none;
+            padding: 10px;
+            flex-grow: 1;
+        }
+
+        .search button {
+            background-color: #ff5722;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search button:hover {
+            background-color: #e64a19;
+        }
+
+        .search button span {
+            color: white;
+            font-size: 16px;
+        }
+
+        #ava {
+            margin-left: 7vw;
+            ;
+            border-radius: 50%;
+        }
+
+        #logout {
+            position: absolute;
+            right: 0;
+            background-color: #1dc091;
+            color: #d7f4eb;
+            margin-right: 25vw;
+            width: 5em;
+            height: 1.5em;
+            text-align: center;
+            letter-spacing: 0.5em;
+        }
+
+        .part {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        .welcome {
+            flex: 1;
+            background-image: url(img/Snipaste_2024-10-22_23-05-56.jpg);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #1ec091;
+        }
+
+
+
+        .intro {
+            flex: 1;
+        }
+
+        .letter {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #25c295;
+            border-radius: 50%;
+            color: #25c295;
+            list-style: none;
+            display: inline-block;
+            padding: 10px;
+            text-align: center;
+            line-height: 50px;
+            margin: 20px 62px;
+        }
+
+        .intro-list {
+            display: inline-block;
+            padding: 0 39px;
+            border-right: 2px solid #efefef;
+        }
+
+        .intro-list:last-child {
+            border-right: 0;
+        }
+
+        .plus {
+            margin-top: 20px;
+        }
+
+        .trend {
+            flex: 1;
+            text-align: center;
+        }
+
+        .title {
+            font-size: large;
+        }
+
+        .rank {
+            font-size: small;
+            color: #45cba4;
+        }
+
+        .classList {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .class {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 135px;
+            height: 63px;
+        }
+
+        .border {
+            border: 2px solid #25c295;
+        }
+
+        .blank {
+            text-decoration: underline;
+            font-size: xx-large;
+            color: red;
+        }
+
+        .green {
+            color: #ffffff;
+            background-color: #25c295;
+        }
+
+        .course {
+            flex: 1;
+            text-align: center;
+        }
+
+        .courseList {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .courseList span {
+            background-color: #f77b72;
+            margin-right: 20px;
+            margin-top: 40px;
+            width: 160px;
+            height: 80px;
+            z-index: 9;
+        }
+
+        .courseList span img {
+            position: absolute;
+        }
+
+        .courseList span:hover {
+            animation: move 3s linear backwards;
+        }
+
+        @keyframes move {
+            50% {
+                background-position: center -200px;
+            }
+        }
+
+        .courseList span:last-child {
+            margin-right: 0;
+        }
+
+        .courseList span {
+            position: relative;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .hover-image {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100px;
+            height: auto;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .courseList span:hover .hover-image {
+            top: -20px;
+            opacity: 1;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 10vh;
+            background-image: url(img/Snipaste_2024-10-23_21-58-21.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 9;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- 记得换背景 -->
+        <img src="img/Snipaste_2024-10-22_22-25-45.jpg" id="logo">
+        <span class="icon">首页</span>
+        <span class="icon">分类查看</span>
+        <div class="search">
+            <input type="text" placeholder="搜索">
+            <button>
+                <span>🔍</span>
+            </button>
+        </div>
+        <img src="#" id="ava">
+        <butoon id="logout">退出</butoon>
+    </header>
+    <!-- 从这开始 -->
+    <div class="container">
+        <div class="part welcome">
+        </div>
+        <div class="part intro">
+            <ul>
+                <li class="letter">共</li>
+                <li class="letter">通</li>
+                <li class="letter">素</li>
+                <li class="letter">转</li>
+            </ul>
+            <ul class="intro-list">
+                <li>界面与设计应用<br>房子</li>
+                <li>java程序编程<br>赵三金</li>
+                <li>设计师的自我修养<br>分享课程</li>
+            </ul>
+            <ul class="intro-list">
+                <li>计算机基础<br>胡薇</li>
+                <li>植物观赏学基础<br>韩一尾</li>
+                <li>生活常识101<br>分享</li>
+            </ul>
+            <ul class="intro-list">
+                <li>新生引导课堂<br>开学季</li>
+                <li>党课精神研讨课<br>分享课程</li>
+                <li>专业方向<br>毕业生</li>
+            </ul>
+            <ul class="intro-list">
+                <li>影视广告摄影基础<br>分享课程</li>
+                <li>程序员的养成<br>赵多金</li>
+                <li>如何让设计师改稿<br>甲方</li>
+            </ul>
+        </div>
+        <div class="part plus trend">
+            <p class="title">最热课程动态</p>
+            <p class="rank">精心为您推荐最佳口碑课程排行</p>
+            <!-- 课表从这里开始 -->
+            <div class="classList">
+                <span class="class border">常勇<br>《化学生活》</span>
+                <span class="class blank">02</span>
+                <span class="class green">张勇<br>《java语言程序设计》</span>
+                <span class="class blank">04</span>
+                <span class="class border">张国<br>《计算机组装》</span><br>
+                <span class="class blank">01</span>
+                <span class="class border">李达<br>《大学生语文》</span>
+                <span class="class blank">03</span>
+                <span class="class border">苏燕<br>《视觉语言》</span>
+                <span class="class blank">05</span>
+            </div>
+        </div>
+        <!-- 最后的课程表 -->
+        <div class="part plus course">
+            <p class="title">猜你喜欢课程</p>
+            <p class="rank">根据您的浏览记录,推荐相似课程列表</p>
+            <div class="courseList">
+                <span>
+                    <h3>《毛泽东思想》</h3>
+                    <p>赵三金</p>
+                    <img class="hover-image" src="#">
+                </span>
+                <span>
+                    <h3>《邓小平理论》</h3>
+                    <p>胡一薇</p>
+                    <img class="hover-image" src="#">
+                </span>
+                <span>
+                    <h3>《科学发展观》</h3>
+                    <p>梁非凡</p>
+                    <img class="hover-image" src="#">
+                </span>
+                <span>
+                    <h3>《三个代表》</h3>
+                    <p>韩一尾</p>
+                    <img class="hover-image" src="#">
+                </span>
+            </div>
+            </span>
+        </div>
+    </div>
+    </div>
+
+    <footer>1</footer>
+</body>
+
+</html>
